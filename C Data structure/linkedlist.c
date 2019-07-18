@@ -165,6 +165,11 @@ struct node *insert(struct node *start)
     {
         preptr = ptr;
         ptr = ptr -> next;
+		if(ptr==NULL)
+		{
+		      printf("\n\n There is no element that you are specified\n");
+			  return start;
+		}
     }
     preptr -> next=new_node;
     new_node -> next = ptr;
@@ -209,28 +214,16 @@ struct node *delete_node(struct node *start)
         {
             preptr = ptr;
             ptr = ptr -> next;
+			if(ptr==NULL)
+		{
+		      printf("\n\n There is no element that you are specified\n");
+			  return start;
+		}
         }
         preptr -> next = ptr -> next;
         free(ptr);
         return start;
     }
-}
-struct node *delete_after(struct node *start)
-{
-    struct node *ptr,*preptr;
-    int val;
-    printf("\n Enter the value after which the node has to deleted : ");
-    scanf("%d", &val);
-    ptr = start;
-    preptr = ptr;
-    while(preptr -> data != val)
-    {
-        preptr = ptr;
-        ptr = ptr -> next;
-    }
-    preptr -> next=ptr -> next;
-    free(ptr);
-    return start;
 }
 struct node *delete_list(struct node *start)
 {
@@ -247,3 +240,4 @@ struct node *delete_list(struct node *start)
     }
 return start;
 }
+
