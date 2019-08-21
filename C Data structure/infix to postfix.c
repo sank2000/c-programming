@@ -41,11 +41,13 @@ int isoperator(char symbol)
 }
 void convert(char infix[],char postfix[])
 {
-    int i,symbol,j = 0;
-    stack[++top] = '#';
+    int i,j = 0;
+    char symbol;
     for(i=0;i<strlen(infix);i++)
     {
         symbol = infix[i];
+        if(symbol=='#')
+            break;
         if(isoperator(symbol) == 0)
         {
           postfix[j++] = symbol;
@@ -53,7 +55,22 @@ void convert(char infix[],char postfix[])
         else
         {
             if(symbol == '(')
-              push(symbol);
+            {
+                push(symbol);
+                symbol=infix[++i];
+                while(symbol != ')')
+                {
+                    if(isoperator(symbol) == 0)
+                    {
+                      postfix[j++] = symbol;
+                    }
+                    else
+                       push(symbol);
+                    symbol=infix[++i];
+
+                }
+                i--;
+            }
             else if(symbol == ')')
             {
                 while(stack[top] != '(')
@@ -77,7 +94,7 @@ void convert(char infix[],char postfix[])
             }
       }
     }
-   while(stack[top] != '#')
+   while(top != -1)
    {
     postfix[j++] = pop();
    }
