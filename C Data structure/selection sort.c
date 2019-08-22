@@ -1,7 +1,7 @@
 #include<stdio.h>
 int main()
 {
-    int arr[20],i,j,no,min_in;
+    int arr[20],i,j,no,min_in,temp;
     printf("Enter the no of elements:");
     scanf("%d",&no);
     for(i=0;i<no;i++)
@@ -20,7 +20,7 @@ int main()
 
             }
         }
-        int temp=arr[i];
+        temp=arr[i];
         arr[i]=arr[min_in];
         arr[min_in]=temp;
      }
@@ -29,3 +29,4 @@ int main()
         printf("\n%d",arr[i]);
     return 0;
 }
+
