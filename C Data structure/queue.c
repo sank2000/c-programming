@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<conio.h>
 #include<stdlib.h>
-#define MAX 2 
+#define MAX 5
 int front = -1;
 int rear = -1;
 int a[MAX];
