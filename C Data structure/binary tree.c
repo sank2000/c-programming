@@ -84,7 +84,6 @@ struct node* search(struct node *root, int num)
 }
 void prepointer(struct node *ptr,int num)
 {
-    struct node *preptr;
      if(ptr != NULL)
     {
         if(ptr->right!=NULL)
@@ -99,7 +98,6 @@ void prepointer(struct node *ptr,int num)
             result = ptr;
             return;
         }
-        preptr = ptr;
         prepointer(ptr -> left, num);
         prepointer(ptr -> right, num);
     }
@@ -118,36 +116,22 @@ struct node *last(struct node *ptr)
 struct node* del_last(struct node *root, int num)
 {
     struct node *preptr;
-    if(root->left != NULL)
-         if(root->left->data == num)
-          {
-              preptr = root;
-              goto next;
-          }
-
-    if(root->right != NULL)
-       if(root->right->data == num)
-        {
-            preptr = root;
-            goto next;
-        }
-        prepointer(root,num);
-        preptr = result;
-        next:
-        if(preptr ->left!=NULL)
-          if(preptr -> left -> data == num)
-             preptr -> left = NULL;
-        if(preptr ->right!=NULL)
-          if(preptr -> right -> data == num)
-            preptr -> right = NULL;
-        return root;
+    prepointer(root,num);
+    preptr = result;
+    if(preptr ->left!=NULL)
+      if(preptr -> left -> data == num)
+         preptr -> left = NULL;
+    if(preptr ->right!=NULL)
+      if(preptr -> right -> data == num)
+        preptr -> right = NULL;
+    return root;
 }
 struct node* delete(struct node *root, int num)
 {
     struct node *ptr, *preptr, *least;
     ptr = root;
     if(root == NULL)
-        return;
+        return NULL;
     else if (root -> data == num)
     {
         if(ptr -> left == NULL && ptr -> right == NULL)
@@ -166,15 +150,11 @@ struct node* delete(struct node *root, int num)
              else
              {
                   ptr = last(root->left);
-                  while(ptr->left != NULL)
-                    ptr = ptr -> left;
-                  while(ptr->right != NULL)
-                    ptr = ptr -> right;
                   del_last(root, ptr->data);
                   root -> data = ptr -> data;
              }
         }
-        printf("Successfully deleted!!!!");
+        printf("\nSuccessfully deleted!!!!");
         return root;
     }
     else
@@ -190,15 +170,11 @@ struct node* delete(struct node *root, int num)
         else
         {
             least = last(root);
-            while(least->left != NULL)
-                least = least-> left;
-            while(least->right != NULL)
-                least = least-> right;
             del_last(root, least -> data);
             res -> data = least -> data;
         }
         res = NULL;
-        printf("Successfully deleted!!!!");
+        printf("\nSuccessfully deleted!!!!");
         return root;
     }
 }
@@ -223,6 +199,7 @@ int main()
                     if(found == 0)
                         printf("\n\tElement not found!!!");
                     found = 0;
+                    res = NULL;
                     break;
              case 4:printf("\nEnter the number to be deleted:");
                     scanf("%d",&num);
@@ -234,4 +211,3 @@ int main()
      }
      return 0;
 }
-
