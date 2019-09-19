@@ -118,7 +118,7 @@ int main()
 {
      int opt,num;
      while(1){
-         printf("\n\n-------BINARY TREE-------\n\n1.Insert\n\nTraversing:\n\n\t2.In-order\n\n\t3.Pre-order\n\n\t4.Post-order\n\n5.Delete\n\n6.Exit\n\nEnter your choice:");
+         printf("\n\n-------BINARY SEARCH TREE-------\n\n1.Insert\n\nTraversing:\n\n\t2.In-order\n\n\t3.Pre-order\n\n\t4.Post-order\n\n5.Delete\n\n6.Exit\n\nEnter your choice:");
          scanf("%d",&opt);
          switch(opt){
              case 1:insert();break;
