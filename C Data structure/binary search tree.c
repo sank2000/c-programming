@@ -103,7 +103,7 @@ struct node* del(struct node* root,int num)
         {
             temp = root;
             root = root->left;
-            free(root);
+            free(temp);
         }
         else
         {
