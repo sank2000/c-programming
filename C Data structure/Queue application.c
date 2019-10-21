@@ -9,7 +9,7 @@ struct node
    int tk;
    int age;
    char name[20];
-   struct poly *next;
+   struct node *next;
 };
 int no=0;
 struct node *list1=NULL;
